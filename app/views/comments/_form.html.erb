@@ -1,0 +1,9 @@
+  <%= form_with(model: @comment) do |f| %>
+  <%= f.text_field :title ,class: "form-control form-control-lg", id: "comment_input"%>
+  <br/>
+  <%= f.submit "add a comment" ,class:'btn btn-info'%>  
+  <% end %>
+
+
+
+

@@ -1,0 +1,23 @@
+<h3>Discussion Topic</h3>
+<p class="mt-4"><strong>Title: <%= @discussion_topic.title %></strong></p>
+<p><strong>Created by: <%= @discussion_topic.topic_creator.name.capitalize %></strong></p>
+<% if policy(@discussion_topic).edit? && policy(@discussion_topic).destroy?  %>
+<div> 
+  <%= link_to "Edit", edit_campaign_discussion_topic_path(@campaign,@discussion_topic),id:"action_edit" %>
+  <%= link_to "Delete", campaign_discussion_topic_path(@campaign,@discussion_topic),id:"action_delete", method: :delete,data: { confirm: "Are you sure?" } %>
+</div>
+<% end %>
+
+<div class="mt-5">
+  <h5>Comments: <%= @discussion_topic.comments.count %></h5>
+</div>
+
+<%= render @discussion_topic.comments %>
+
+<div class="row my-4 ">
+  <%= render 'comments/form', locals: {commentable: @discussion_topic, type:"Discussion Topic"} %>
+</div>
+<%= render @discussion_topic.comments %>
+<div class="row my-4 ">
+  <%= render 'comments/form', locals: {commentable: @discussion_topic, type:"Discussion Topic"} %>
+</div>

@@ -1,0 +1,27 @@
+<div>   
+  <h2 class="page_heading">Experts</h2>
+  <table class="table table-striped table-bordered table-hover">
+      <thead class="thead-info">
+        <tr>
+          <th>Serial No</th>
+          <th>Username</th>
+          <th>Profession</th>
+          <th>Service</th>
+       </tr>
+      </thead>
+      <tbody>
+        <% @experts.each_with_index do |expert, index|%>                    
+        <tr>
+        <th><%= index %></th>
+        <td><%= expert.name.capitalize%><p></td>
+        <td><%= expert.profession %></td>
+        <td><%= expert.service %></td>
+       </tr>
+        <% end %>
+      </tbody>
+  </table>
+   <%= link_to "Back", root_path , class:'btn btn-info'%>
+
+</div>
+
+

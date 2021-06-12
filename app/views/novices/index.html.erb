@@ -1,0 +1,27 @@
+<div>
+    <div>
+        <h2 class="page_heading">Novices</h2>
+    </div>
+    <table class="table table-striped table-hover table-bordered index_table">
+  <thead class="thead-info">
+    <tr class="table_row">
+      <th scope="col">Serial No</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @novices.each_with_index do |novice, index|%>                    
+    <tr>
+      <th scope="row"><%= index %></th>
+      <td><%= link_to novice.name.capitalize, novice ,id:"index_links"%></td>
+      <td><%= novice.email %></td>
+      <td><%= novice.status %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+  <%= link_to "Back", root_path , class:'btn btn-info'%>
+
+</div>

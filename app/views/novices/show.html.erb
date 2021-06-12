@@ -1,0 +1,9 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">  <%= @novice.name %></h1>
+    <p class="lead"> Email:  <%= @novice.email %></p>
+    <p class="lead"> Status: <%= @novice.status %></p>
+      <%= link_to 'Edit', edit_novice_path ,class:'btn btn-info',id:"action_edit" if policy(@novice).edit? %> 
+      <%= link_to 'Delete', novice_path ,class:'btn btn-info',id:"action_delete", method: :delete, data: { confirm: 'Are you sure?' } if policy(@novice).edit?%> 
+  </div>
+</div>

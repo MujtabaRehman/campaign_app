@@ -1,0 +1,31 @@
+<h3> Campaign Page </h3>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-info" >
+    <tr>
+      <th>Title</th>
+      <th>Purpose</th>
+      <th>Estimated Time</th>
+      <th>Created By</th>
+      <%if current_user.type=="Expert"%>
+      <th>Options</th>
+      <%end%>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @campaigns.each do |campaign| %>
+      <tr>
+        <td><%= link_to campaign.title ,campaign%></td>
+        <td><%= campaign.purpose %></td>
+        <td><%= campaign.estimated_time %></td>
+        <td><%= campaign.expert.name%></td>
+        <%if campaign.expert.id==current_user.id%>
+        <td><%= link_to 'Delete', campaign, method: :delete, data: { confirm: 'Are you sure?' } , class:'btn btn-outline-danger' %></td>
+        <%end%>
+       </tr>
+
+    <% end %>
+  </tbody>
+</table>
+<br>

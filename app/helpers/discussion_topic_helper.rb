@@ -1,0 +1,2 @@
+module DiscussionTopicHelper
+end

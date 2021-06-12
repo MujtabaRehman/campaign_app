@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="container mb-4">
+    <h2> Do Lists</h2>
+    <div class="row mx-4">
+      <div class="col-5 offset-2 ">
+        <h5>Description</h5>
+      </div>
+      <div class="col-3">
+       <h5>Completed</h5>
+      </div>
+    </div>  
+  </div>
+  <ol>
+  <% @campaign.do_lists.each do |f| %>
+        <div class="container" id="do_list_content">
+            <div class="row mx-1">
+                <div class="col-5 offset-2">
+                    <p><%= f.description %></p>
+                </div>
+                <div class="col-3" >
+                  <%if f.completed %>
+                    <p id="status_true">✔</p>
+                  <% else %>
+                  <p id="status_false">✖</p>         
+                  <% end %>
+                </div>
+                <div class="col-1"  >
+                  <%= link_to "Edit", edit_campaign_do_list_path(@campaign,do_list),id:"action_edit" if policy(do_list).edit?%>
+                  <%= link_to "Delete", [@campaign,do_list],id:"action_delete", method: :delete, data: {confirm: "Are you sure?"} if policy(do_list).destroy?%>
+                </div>
+            </div>
+        </div>
+<% end %>
+</ol>
+  <% if current_user.id==@campaign.user_id %>
+   <div class="row my-2">
+      <div class="col offset-2">
+        <%= link_to "Add Do_list", new_campaign_do_list_path(@campaign),class:"btn btn-outline-info" ,id:"btn" , role:"button"  %>
+      </div>
+    </div>
+  <% end %>           
+</div>

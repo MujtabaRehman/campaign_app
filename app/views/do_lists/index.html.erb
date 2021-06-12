@@ -1,0 +1,22 @@
+<h1><%= @user.name.capitalize() %> Tasks</h1>
+<h4>Description|Completed|Action</h4>
+<ul>
+<% @do_lists.each do |f| %>
+    <li>
+        <p><%= f.description %>
+        <%if f.completed %>
+            <p> Completed</p>
+        <% else %>
+         <p> Incomplete</p>
+           
+        <% end
+
+        <%= link_to "Edit", edit_campaign_do_list_path(f)%>
+        <%= link_to "Delete", do_list,method: :delete,data: {confirm: "Are you sure?"}%>
+        </p>
+    </li>
+<% end %>
+</ul>
+<br/>
+
+<%= link_to  "Add Task", new_campaign_do_list_path %>

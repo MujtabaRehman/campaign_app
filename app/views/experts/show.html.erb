@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row row-cols-1 justify-content-md-center  mx-5 my-5">
+        <div class="col-7 px-4 pb-5 pt-3 " id="account_info">
+            <div class="row gy-5  justify-content-md-center">
+                <div class="col-6 mb-5 mt-4 gy-5"><h3>Account Details:</h3>
+                    <div class="col my-5">
+                        <h5>
+                            Username: <%= @expert.name %>
+                        </h5>
+                    </div>
+
+
+                    <div class="col my-5">
+                        <h5>
+                            Email: <%= @expert.email %>
+                        </h5>
+                    </div>
+
+                    <div class="col my-5">
+                        <h5>
+                            Profession: <%= @expert.profession %>
+                        </h5>
+                    </div>
+
+                    <div class="col my-5">
+                        <h5>
+                            Service: <%= @expert.service %>
+                        </h5>
+                    </div>
+
+
+                    <div class="col mx-5">
+                        <%= link_to "Edit", :edit_expert,id:"action_edit" if policy(@expert).edit?  %>
+                        <%= link_to "Delete", :expert,id:"action_delete", method: :delete,data: { confirm: "Are you sure?" } if policy(@expert).destroy? %>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">  <%= @expert.name %></h1>
+    <p class="lead"> Email:  <%= @expert.email %></p>
+    <p class="lead"> Profession: <%= @expert.profession %></p> 
+    <p class="lead"> Service: <%= @expert.service %></p>
+
+      <%= link_to 'Edit', :edit_expert,id:"action_edit" if policy(@expert).edit?  , class:'btn btn-info'%> |
+      <%= link_to 'Delete', :expert,id:, method: :delete, data: { confirm: 'Are you sure?' } if policy(@expert).edit?, class:'btn btn-danger'%> |
+  </div>
+</div>
