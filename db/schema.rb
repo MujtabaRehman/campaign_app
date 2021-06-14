@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_06_09_084958) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "campaigns", force: :cascade do |t|
     t.string "title"
     t.string "purpose"
@@ -28,9 +31,9 @@ ActiveRecord::Schema.define(version: 2021_06_09_084958) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.string "commentable_type", null: false
-    t.integer "commentable_id", null: false
+    t.bigint "commentable_id", null: false
     t.string "commented_type", null: false
-    t.integer "commented_id", null: false
+    t.bigint "commented_id", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["commented_type", "commented_id"], name: "index_comments_on_commented"
     t.index ["user_id"], name: "index_comments_on_user_id"
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_084958) do
     t.integer "user_id"
     t.integer "campaign_id"
     t.string "topic_creator_type", null: false
-    t.integer "topic_creator_id", null: false
+    t.bigint "topic_creator_id", null: false
     t.index ["campaign_id"], name: "index_discussion_topics_on_campaign_id"
     t.index ["topic_creator_type", "topic_creator_id"], name: "index_discussion_topics_on_topic_creator"
     t.index ["user_id"], name: "index_discussion_topics_on_user_id"
