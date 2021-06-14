@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
   before_action :find_commentable,only: [:index , :new , :create , :find_comment]
   before_action :find_comment,only: [:edit , :update, :destroy , :show]
-  def create
+
+  def create 
     @comment = Comment.new(comment_params)
     @comment.commentable_id = @commentable.id
     @comment.commentable_type = @commentable.class.name
@@ -11,13 +12,13 @@ class CommentsController < ApplicationController
 
     if comment.save
       flash[:success] = "Comment created successfully"
-      @commentable.class.name == "Campaign"?(redirect_to campaign_path(@commentable)): (redirect_to campaign_topic_path(params[:campaign_id], @commentable))
+      @commentable.class.name == "Campaign" ? (redirect_to campaign_path(@commentable)) : (redirect_to campaign_topic_path(params[:campaign_id] , @commentable))
     else
       flash[:error] = "Comment Creation Failed"
       render 'new'
     end
   end
-
+  
   def show
   end
   def edit
@@ -27,10 +28,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.destroy
       flash[:success] = "Comment Deleted"
-      @commentable.class.name == "Campaign" ? (redirect_to campaign_path(@commentable)):(redirect_to campaign_dicsussion_topic_path(params[:campaign_id] , @commentable)
+      @commentable.class.name == "Campaign" ? (redirect_to campaign_path(@commentable)) : (redirect_to campaign_dicsussion_topic_path(params[:campaign_id] , @commentable))
     else
       flash[:error] = "Comment Deletion Failed"
-      @commentable.class.name =="Campaign"?(redirect_to campaign_path(@commentable)):(redirect_to campaign_dicsussion_topic_path(params[:campaign_id] , @commentable))
+      @commentable.class.name =="Campaign" ? (redirect_to campaign_path(@commentable)) : (redirect_to campaign_dicsussion_topic_path(params[:campaign_id] , @commentable))
     end
   end
 
