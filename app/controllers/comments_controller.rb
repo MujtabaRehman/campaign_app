@@ -28,10 +28,18 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.destroy
       flash[:success] = "Comment Deleted"
-      @commentable.class.name == "Campaign" ? (redirect_to campaign_path(@commentable)) : (redirect_to campaign_dicsussion_topic_path(params[:campaign_id] , @commentable))
+      if @commentable.class.name == "Campaign"
+        redirect_to campaign_path(@commentable)
+      else
+        redirect_to campaign_dicsussion_topic_path(params[:campaign_id] , @commentable)
+      end
     else
       flash[:error] = "Comment Deletion Failed"
-      @commentable.class.name =="Campaign" ? (redirect_to campaign_path(@commentable)) : (redirect_to campaign_dicsussion_topic_path(params[:campaign_id] , @commentable))
+      if @commentable.class.name =="Campaign"
+          redirect_to campaign_path(@commentable)
+      else
+          redirect_to campaign_dicsussion_topic_path(params[:campaign_id] , @commentable)
+      end
     end
   end
 
