@@ -3,8 +3,8 @@
 <p><strong>Created by: <%= @discussion_topic.topic_creator.name.capitalize %></strong></p>
 <% if policy(@discussion_topic).edit? && policy(@discussion_topic).destroy?  %>
 <div> 
-  <%= link_to "Edit", edit_campaign_discussion_topic_path(@campaign,@discussion_topic),id:"action_edit" %>
-  <%= link_to "Delete", campaign_discussion_topic_path(@campaign,@discussion_topic),id:"action_delete", method: :delete,data: { confirm: "Are you sure?" } %>
+  <%= link_to "Edit", edit_campaign_discussion_topic_path(@campaign,@discussion_topic),class:'btn btn-info',id:"action_edit" %>
+  <%= link_to "Delete", campaign_discussion_topic_path(@campaign,@discussion_topic),class:'btn btn-danger',id:"action_delete", method: :delete,data: { confirm: "Are you sure?" } %>
 </div>
 <% end %>
 
@@ -16,8 +16,3 @@
 
 <div class="row my-4 ">
   <%= render 'comments/form', locals: {commentable: @discussion_topic, type:"Discussion Topic"} %>
-</div>
-<%= render @discussion_topic.comments %>
-<div class="row my-4 ">
-  <%= render 'comments/form', locals: {commentable: @discussion_topic, type:"Discussion Topic"} %>
-</div>

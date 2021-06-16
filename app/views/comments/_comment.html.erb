@@ -1,13 +1,11 @@
-<div class="row mx-4">
-  <p><strong><%= comment.commented.name %></strong></p>
-</div>
-
-<div class="row mx-5">
-  <div class="col-10">
+  <div class="row mx-4">
+    <p><strong><%= comment.commented.name %></strong></p> 
+  </div>
+  <div class="row mx-5">
+    <div class="col-10">
       <div class="row">
         <p><strong></strong><%= comment.title %></p>
       </div>
-
   </div>
   <div class="col-2">
     <% if comment.commented_id == current_user.id %>
@@ -19,4 +17,5 @@
   <% end %>
   </div>
 </div>
+
   
