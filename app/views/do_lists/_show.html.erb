@@ -25,8 +25,8 @@
                   <% end %>
                 </div>
                 <div class="col-1"  >
-                  <%= link_to "Edit", edit_campaign_do_list_path(@campaign,do_list),id:"action_edit" if policy(do_list).edit?%>
-                  <%= link_to "Delete", [@campaign,do_list],id:"action_delete", method: :delete, data: {confirm: "Are you sure?"} if policy(do_list).destroy?%>
+                  <%= link_to "Edit" ,edit_campaign_do_list_path(@campaign,f) ,class:'btn btn-info',id:"action_edit" if policy(f).edit?%>
+                  <%= link_to "Delete", [@campaign,f],id:"action_delete", method: :delete, data: {confirm: "Are you sure?"} if policy(f).destroy?%>
                 </div>
             </div>
         </div>

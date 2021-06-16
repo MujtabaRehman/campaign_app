@@ -2,6 +2,16 @@ class CommentsController < ApplicationController
   before_action :find_commentable,only: [:index , :new , :create , :find_comment]
   before_action :find_comment,only: [:edit , :update, :destroy , :show]
 
+  def index
+    @comments = @campaign.comments.all
+  end
+    
+  def new
+   @comment = @campaign.comments.new
+   end
+  
+   def show
+   end
   def create 
     @comment = Comment.new(comment_params)
     @comment.commentable_id = @commentable.id
@@ -19,11 +29,18 @@ class CommentsController < ApplicationController
     end
   end
   
-  def show
-  end
   def edit
   end
-
+  def update
+    if @comment.update(comment_params)
+      flash[:success] = "Object was successfully updated"
+      redirect_to @campaign
+    else
+      flash[:error] = "Something went wrong"
+      render 'edit'
+    end
+  end
+  
   def destroy
     @comment = Comment.find(params[:id])
     if @comment.destroy
